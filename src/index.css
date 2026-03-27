@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+:root {
+  --background: 222 47% 5%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 8%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 47% 8%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 263 70% 58%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 55%;
+  --accent: 217 33% 17%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217 33% 17%;
+  --input: 217 33% 17%;
+  --ring: 263 70% 58%;
+
+  /* Game-specific colors */
+  --player-1: 0 84% 60%;
+  --player-2: 47 96% 53%;
+  --board: 217 33% 12%;
+  --cell: 222 47% 10%;
+  --hover: 217 33% 22%;
+  --win-glow: 142 76% 46%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  margin: 0;
+  padding: 0;
+}
+
+/* Board styling */
+.board-cell {
+  transition: all 0.15s ease;
+}
+
+.board-cell:hover {
+  transform: scale(1.05);
+}
+
+/* Piece animations */
+@keyframes drop {
+  0% {
+    transform: translateY(-400px);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.piece-drop {
+  animation: drop 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Winning piece glow */
+@keyframes win-pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px hsl(var(--win-glow) / 0.5),
+                0 0 20px hsl(var(--win-glow) / 0.3),
+                0 0 30px hsl(var(--win-glow) / 0.1);
+  }
+  50% {
+    box-shadow: 0 0 15px hsl(var(--win-glow) / 0.8),
+                0 0 30px hsl(var(--win-glow) / 0.5),
+                0 0 45px hsl(var(--win-glow) / 0.3);
+  }
+}
+
+.winning-piece {
+  animation: win-pulse 1s ease-in-out infinite;
+}
+
+/* AI thinking indicator */
+@keyframes thinking {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.ai-thinking {
+  animation: thinking 1s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--secondary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
