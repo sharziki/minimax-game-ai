@@ -211,6 +211,18 @@ function App() {
             The AI uses minimax with alpha-beta pruning to search the game tree. Higher depth = stronger AI but slower moves.
           </p>
         </div>
+        <footer className="mt-8 py-4 text-center text-xs text-[hsl(var(--muted-foreground))] border-t border-[hsl(var(--border))]">
+          Made by{' '}
+          <a 
+            href="https://github.com/sharziki" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-[hsl(var(--primary))] hover:underline"
+          >
+            Sharvil Saxena
+          </a>
+        </footer>
+
       </div>
     </div>
   );
